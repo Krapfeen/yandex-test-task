@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-gold: #c9a03d;
+    --color-gold-dark: #b6882a;
+    --color-dark-bg: #1F1F1F;
+    --color-light-bg: #faf7f0;
+    --color-accent-red: #F54932;
+    --color-text-dark: #2c2822;
+    --color-text-muted: #4a433a;
+    --color-border: #e2d9ce;
+    --color-white: #ffffff;
+
+    --shadow-sm: 0 12px 24px -8px rgba(0, 0, 0, 0.08);
+
+    --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.1rem;
+    --font-size-hero: clamp(2rem, 7vw, 3.8rem);
+
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+    --font-extrabold: 800;
+
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-2xl: 40px;
+    --spacing-3xl: 48px;
+    --spacing-4xl: 64px;
+
+    --radius-full: 48px;
+    --transition-base: 0.2s ease;
+}
+
+body {
+    font-family: var(--font-family);
+    background: var(--color-light-bg);
+    color: var(--color-text-dark);
+    line-height: 1.4;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+.marquee {
+    background: var(--color-accent-red);
+    color: #FFFFFF;
+    padding: 12px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    font-weight: var(--font-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    font-size: var(--font-size-base);
+}
+
+.marquee__content {
+    display: inline-block;
+    animation: marqueeScroll 18s linear infinite;
+    padding-left: 100%;
+}
+
+.marquee__content span {
+    margin-right: 3rem;
+}
+
+@keyframes marqueeScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+.hero {
+    padding: var(--spacing-4xl) 0 80px;
+    text-align: center;
+    background-image: url("../assets/images/background.png");
+    background: linear-gradient(135deg, #fff6e8 0%, #f2ecdf 100%);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.hero__title {
+    font-size: var(--font-size-hero);
+    font-weight: var(--font-extrabold);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: #1f2a1e;
+    max-width: 1000px;
+    margin: 0 auto var(--spacing-md);
+    text-transform: uppercase;
+}
+
+.hero__subtitle {
+    font-size: var(--font-size-lg);
+    max-width: 700px;
+    margin: 0 auto var(--spacing-xl);
+    color: var(--color-text-muted);
+    font-weight: var(--font-medium);
+}
+
+.hero__buttons {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px var(--spacing-xl);
+    font-weight: var(--font-semibold);
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    transition: all var(--transition-base);
+    cursor: pointer;
+    font-size: var(--font-size-base);
+    border: none;
+    background: transparent;
+}
+
+.btn-primary {
+    background: var(--color-dark-bg);
+    color: #fff;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+    background: var(--color-gold-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 20px -8px rgba(0,0,0,0.2);
+}
+
+.btn-outline {
+    border: 2px solid var(--color-dark-bg);
+    color: var(--color-dark-bg);
+}
+
+.btn-outline:hover {
+    background: var(--color-dark-bg);
+    color: #fff;
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-3px);
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+    .hero {
+        padding: var(--spacing-2xl) 0 var(--spacing-3xl);
+    }
+    .hero__buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-md);
+    }
+    .btn {
+        width: 80%;
+        text-align: center;
+    }
+    .marquee {
+        font-size: 0.8rem;
+        padding: 8px 0;
+    }
+}
