@@ -4,6 +4,7 @@
     padding: 12px 0;
     white-space: nowrap;
     overflow: hidden;
+    font-family: var(--font-family-header);
     font-weight: var(--font-medium);
     text-transform: uppercase;
     letter-spacing: 0.03em;
@@ -26,14 +27,15 @@
 }
 
 .btn {
+    min-width: 263px;
     display: inline-block;
-    padding: 14px var(--spacing-xl);
+    padding: 20px 49px;
     font-weight: var(--font-weight-semibold);
     border-radius: var(--radius-full);
     text-decoration: none;
-    transition: all var(--transition-base);
+    /* transition: all var(--transition-base); */
     cursor: pointer;
-    font-size: var(--font-size-base);
+    font-size: 16px;
     border: none;
     background: transparent;
 }

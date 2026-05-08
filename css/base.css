@@ -12,7 +12,8 @@
     --shadow-md: 0 16px 32px -12px rgba(0, 0, 0, 0.12);
     --shadow-hover: 0 20px 28px -12px rgba(0, 0, 0, 0.2);
 
-    --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-family-header: "Merriweather", serif;
+    --font-family-main: "Golos Text", sans-serif;
     --font-size-xs: 0.75rem;
     --font-size-sm: 0.875rem;
     --font-size-base: 1rem;
@@ -56,11 +57,23 @@
 }
 
 body {
-    font-family: var(--font-family);
+    font-family: var(--font-family-main);
     background: var(--color-light-bg);
     color: var(--color-text-dark);
     line-height: 1.4;
     overflow-x: hidden;
+}
+
+h1, h2 {
+    font-family: var(--font-family-header);
+}
+
+h1 {
+    font-size: 60px;
+}
+
+h2 {
+    font-size: 36px;
 }
 
 .container {
