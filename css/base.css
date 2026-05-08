@@ -1,0 +1,70 @@
+:root {
+    --color-gold: #FBCE51;
+    --color-dark: #1F1F1F;
+    --color-light: #FFFFFF;
+    --color-red: #F54932;
+    --color-text-light: #FFFFFF;
+    --color-text-dark: #313131;
+    --color-background-section: #E6DBCF;
+    --color-background: #FFFFFF;
+
+    --shadow-sm: 0 12px 24px -8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 16px 32px -12px rgba(0, 0, 0, 0.12);
+    --shadow-hover: 0 20px 28px -12px rgba(0, 0, 0, 0.2);
+
+    --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-md: 1.125rem;
+    --font-size-lg: 1.25rem;
+    --font-size-xl: 1.5rem;
+    --font-size-2xl: 2rem;
+    --font-size-3xl: 2.5rem;
+    --font-size-hero: clamp(2rem, 7vw, 3.8rem);
+
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-2xl: 40px;
+    --spacing-3xl: 48px;
+    --spacing-4xl: 64px;
+
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 28px;
+    --radius-xl: 32px;
+    --radius-full: 48px;
+
+    --transition-fast: 0.15s ease;
+    --transition-base: 0.25s ease;
+    --transition-slow: 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background: var(--color-light-bg);
+    color: var(--color-text-dark);
+    line-height: 1.4;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}

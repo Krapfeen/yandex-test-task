@@ -7,8 +7,8 @@
 }
 
 :root {
-    --color-gold: #c9a03d;
-    --color-gold-dark: #b6882a;
+    --color-gold: #FBCE51;
+    --color-gold-dark: #FBCE51;
     --color-dark-bg: #1F1F1F;
     --color-light-bg: #faf7f0;
     --color-accent-red: #F54932;
@@ -136,6 +136,7 @@ body {
 
 .btn-primary:hover {
     background: var(--color-gold-dark);
+    color: var(--color-dark-bg);
     transform: translateY(-3px);
     box-shadow: 0 12px 20px -8px rgba(0,0,0,0.2);
 }
