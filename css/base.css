@@ -87,3 +87,13 @@ h2 {
     margin: 0 auto;
     padding: 0 var(--spacing-lg);
 }
+
+.footer-text {
+    padding: 72px;
+    padding-top: 40px;
+    font-family: var(--font-family-main);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    color: var(--color-text-dark);
+}
