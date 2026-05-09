@@ -5,6 +5,7 @@
     --color-red: #F54932;
     --color-text-light: #FFFFFF;
     --color-text-dark: #313131;
+    --color-text-secondary: #3057A2;
     --color-background-section: #E6DBCF;
     --color-background: #FFFFFF;
 
@@ -66,6 +67,11 @@ body {
 
 h1, h2 {
     font-family: var(--font-family-header);
+    text-transform: uppercase;
+}
+
+h2 span {
+    color: var(--color-red);
 }
 
 h1 {
