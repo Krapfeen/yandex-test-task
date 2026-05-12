@@ -7,15 +7,23 @@
     <title>Васкокинский турнир | Превратим уездный город в столицу</title>
 </head>
 <body>
-    <header class="hero" id="hero">
-        <div class="container logo"><img src="assets/images/logo.png"></div>
-        <div class="container">
-            <h1 class="hero-title">ПРЕВРАТИТЕ УЕЗДНЫЙ ГОРОД В СТОЛИЦУ ЗЕМНОГО ШАРА</h1>
-            <p class="hero-subtitle">Оплатите взнос на телеграммы для организации Международного васкониского турнира по шахматам</p>
-            <div class="hero-buttons">
-                <a href="#lecture-section" class="btn btn-primary">Поддержать шахматную мысль</a>
-                <a href="#stages-section" class="btn btn-outline">Подробнее о турнире</a>
+    <header class="container" id="hero">
+        <div class="row">
+            <div class="col-6">
+                <div class="logo"><img src="assets/images/logo.png"></div>
+                <div class="">
+                    <h1 class="hero-title">
+                            <span>Превратите уездный город</span>
+                            <span>в столицу земного шара</span>
+                    </h1>
+                    <p class="hero-subtitle">Оплатите взнос на телеграммы для организации Международного васкониского турнира по шахматам</p>
+                    <div class="col-12">
+                        <a href="#lecture-section" class="btn btn-primary">Поддержать шахматную мысль</a>
+                        <a href="#stages-section" class="btn btn-outline">Подробнее о турнире</a>
+                    </div>
+                </div>
             </div>
+            <div class="col-6"></div>
         </div>
     </header>
     <div class="marquee">
@@ -26,21 +34,19 @@
         </div>
     </div>
     <main class="container">
-        <section class="lecture-section" id="lecture-section">
-        <div class="lecture-grid">
-            <div class="lecture-text">
+        <section class="row" id="lecture-section">
+            <div class="col-8">
                 <h2>Чтобы поддержать Международный васюкинский турнир посетите лекцию на тему: <span>«Плодотворная дебютная идея»</span></h2>
             </div>
-            <div class="lecture-image">
+            <div class="col-4">
                 <img src="./assets/images/photo-1.png" alt="Лекция">
             </div>
-        </div>
         </section>
-        <section class="game-section">
-            <div class="game-image">
+        <section class="row">
+            <div class="col-5">
                 <img src="./assets/images/photo-3.png" alt="Сеанс игры">
             </div>
-            <div class="game-info">
+            <div class="col-7">
                 <h2>и Сеанс <span>одновременной игры в шахматы на 160 досках</span> гроссмейстера О. Бендера</h2>
                 <div class="info-table-inner">
                     <table class="info-table">
@@ -69,12 +75,15 @@
                 <p class="contact-note">По всем вопросам обращаться в администрацию к К. Михельсону</p>
             </div>
         </section>
-        <section>
+        <section class="row">
+            <div class="col-12">
             <div class="title-section">
                 <h2>Этапы преображения Васюков</h2>
                 <span>Будущие источники обогащения васюкинцев</span>
             </div>
-            <div class="grid-parent">
+            </div>
+            <div class="col-12">
+<div class="grid-parent">
                 <div class="grid-inner-1 grid-inner">
                     <div class="list">1</div>
                     <div>Строительство железнодорожной магистрали Москва-Васюки</div>
@@ -104,6 +113,8 @@
                     <div>Создание аэропорта «Большие Васюки» с регулярным отправлением почтовых самолётов и дирижаблей во все концы света, включая Лос-Анжелос и Мельбурн</div>
                 </div>
             </div>
+            </div>
+            
         </section>
         <section class="participants-section" id="participants-section">
             <div class="participants-header">
@@ -123,7 +134,7 @@
             </div>
         </section>
     </main>
-    <footer>
+    <footer class="contaimer-fluid">
         <div class="marquee">
             <div class="marquee-content">
                 <span>Дело помощи утопающим — дело рук самих утопающих!</span>
@@ -131,7 +142,9 @@
                 <span>Лед тронулся, господа присяжные заседатели!</span>
             </div>
         </div>
-        <p class="footer-text">Все персонажи, события и цитаты являются вымышленными и не принадлежат создателям сайта. С подробностями можно познакомиться в главе XXXIV романа Ильи Ильфа и Евгения Петрова «Двенадцать стульев».</p>
+        <div class="row">
+            <p class="footer-text">Все персонажи, события и цитаты являются вымышленными и не принадлежат создателям сайта. С подробностями можно познакомиться в главе XXXIV романа Ильи Ильфа и Евгения Петрова «Двенадцать стульев».</p>
+        </div>
     </footer>
     <script src="./js/script.js"></script>
 </body>
