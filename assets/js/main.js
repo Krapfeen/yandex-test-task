@@ -1,140 +1,125 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const anchorLinks = document.querySelectorAll('a[href^="#"]');
-    anchorLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href').substring(1);
-            if (!targetId) return;
-            const targetElement = document.getElementById(targetId);
-            if (targetElement) {
-                e.preventDefault();
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-});
+(function() {
+    const section = document.getElementById('participants-section');
+    if (!section) return;
 
-// Данные участников (соответствуют макету и дополнены для 6 человек)
-const participantsData = [
-    { name: "Хосе Рауль Капабланка", role: "Чемпион мира по шахматам", photo: "assets/images/profile.png" },
-    { name: "Эммануил Ласкер", role: "Чемпион мира по шахматам", photo: "assets/images/profile.png" },
-    { name: "Александр Алехин", role: "Чемпион мира по шахматам", photo: "assets/images/profile.png" },
-    { name: "Арон Нимцович", role: "Чемпион мира по шахматам", photo: "assets/images/profile.png" },
-    { name: "Рихард Рети", role: "Чемпион мира по шахматам", photo: "assets/images/profile.png" },
-    { name: "Остап Бендер", role: "Гроссмейстер", photo: "assets/images/profile.png" },
-];
+    const rowCards = section.querySelector('.row.justify-between');
+    if (!rowCards) return;
 
-let extendedParticipants = [...participantsData, ...participantsData, ...participantsData];
-let currentIndex = participantsData.length;
-let autoInterval = null;
-const track = document.getElementById('participantsTrack');
-const prevBtn = document.querySelector('.participants-prev');
-const nextBtn = document.querySelector('.participants-next');
-const counterSpan = document.querySelector('.participants-counter');
+    const cards = Array.from(rowCards.querySelectorAll('.card'));
+    if (cards.length === 0) return;
 
-function getVisibleCards() {
-    if (window.innerWidth <= 600) return 1;
-    if (window.innerWidth <= 880) return 2;
-    return 3;
-}
+    const carouselWrapper = document.createElement('div');
+    carouselWrapper.className = 'participants-carousel';
+    const track = document.createElement('div');
+    track.className = 'carousel-track';
 
-function getCardWidth() {
-    const card = document.querySelector('.participant-card');
-    if (!card) return 0;
-    const style = getComputedStyle(card);
-    const marginRight = parseFloat(style.marginRight) || 0;
-    return card.offsetWidth + marginRight;
-}
-
-function updateCounter() {
-    if (!counterSpan) return;
-    let rawIndex = currentIndex % participantsData.length;
-    let current = rawIndex + 1;
-    counterSpan.innerText = `${current} / ${participantsData.length}`;
-}
-
-function renderParticipants() {
-    if (!track) return;
-    track.innerHTML = '';
-    extendedParticipants.forEach(p => {
-        const card = document.createElement('div');
-        card.className = 'participant-card';
-        card.innerHTML = `
-            <img class="participant-photo" src="${p.photo}" alt="${p.name}">
-            <div class="participant-name">${p.name}</div>
-            <div class="participant-role">${p.role}</div>
-            <a href="#" class="participant-details">Подробнее</a>
-        `;
+    cards.forEach(card => {
         track.appendChild(card);
     });
-    updateCarousel(false);
-    updateCounter();
-}
+    carouselWrapper.appendChild(track);
 
-function updateCarousel(animate = true) {
-    const step = getCardWidth();
-    if (step === 0) return;
-    const offset = currentIndex * step;
-    track.style.transition = animate ? 'transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1)' : 'none';
-    track.style.transform = `translateX(-${offset}px)`;
-    if (animate) {
-        track.addEventListener('transitionend', checkInfiniteLoop, { once: true });
-    } else {
-        checkInfiniteLoop();
+    rowCards.parentNode.insertBefore(carouselWrapper, rowCards);
+    rowCards.remove();
+
+    const prevBtn = section.querySelector('.participants-prev');
+    const nextBtn = section.querySelector('.participants-next');
+    const counterSpan = section.querySelector('.participants-counter');
+
+    let currentIndex = 0;
+    let cardsPerView = 3;
+    let totalCards = cards.length;
+    let autoInterval = null;
+    const autoDelay = 4000;
+
+    function getCardsPerView() {
+        return window.innerWidth >= 768 ? 3 : 1;
     }
-}
 
-function checkInfiniteLoop() {
-    const visible = getVisibleCards();
-    const maxIndex = extendedParticipants.length - visible;
-    if (currentIndex <= 0) {
-        currentIndex = participantsData.length;
-        updateCarousel(false);
-    } else if (currentIndex >= maxIndex - participantsData.length + 1) {
-        currentIndex = participantsData.length;
-        updateCarousel(false);
+    function updateCarousel() {
+        cardsPerView = getCardsPerView();
+        const cardWidth = 100 / cardsPerView;
+        cards.forEach(card => {
+            card.style.flex = `0 0 ${cardWidth}%`;
+            card.style.maxWidth = `${cardWidth}%`;
+        });
+        const shift = - (currentIndex * (100 / cardsPerView));
+        track.style.transform = `translateX(${shift}%)`;
+
+        const totalPages = Math.ceil(totalCards / cardsPerView);
+        const currentPage = Math.floor(currentIndex / cardsPerView) + 1;
+        counterSpan.textContent = `${currentPage} / ${totalPages}`;
     }
-    updateCounter();
-}
 
-function nextSlide() {
-    const visible = getVisibleCards();
-    const maxIndex = extendedParticipants.length - visible;
-    if (currentIndex < maxIndex) {
-        currentIndex++;
-    } else {
-        currentIndex = participantsData.length;
+    function nextSlide() {
+        const cardsPerViewNow = getCardsPerView();
+        const maxStartIndex = totalCards - cardsPerViewNow;
+        if (currentIndex + cardsPerViewNow >= totalCards) {
+            currentIndex = 0;
+        } else {
+            currentIndex = Math.min(currentIndex + cardsPerViewNow, maxStartIndex);
+        }
+        updateCarousel();
+        resetAutoTimer();
     }
-    updateCarousel(true);
-    resetAutoPlay();
-}
 
-function prevSlide() {
-    if (currentIndex > 0) {
-        currentIndex--;
-    } else {
-        currentIndex = extendedParticipants.length - getVisibleCards() - participantsData.length;
+    function prevSlide() {
+        const cardsPerViewNow = getCardsPerView();
+        if (currentIndex - cardsPerViewNow < 0) {
+            currentIndex = totalCards - cardsPerViewNow;
+            if (currentIndex < 0) currentIndex = 0;
+        } else {
+            currentIndex = currentIndex - cardsPerViewNow;
+        }
+        updateCarousel();
+        resetAutoTimer();
     }
-    updateCarousel(true);
-    resetAutoPlay();
-}
 
-function resetAutoPlay() {
-    if (autoInterval) clearInterval(autoInterval);
-    autoInterval = setInterval(() => {
-        if (document.hasFocus()) nextSlide();
-    }, 4000);
-}
-
-prevBtn?.addEventListener('click', prevSlide);
-nextBtn?.addEventListener('click', nextSlide);
-window.addEventListener('resize', () => {
-    if (track) {
-        setTimeout(() => updateCarousel(false), 150);
+    function resetAutoTimer() {
+        if (autoInterval) {
+            clearInterval(autoInterval);
+            autoInterval = null;
+        }
+        startAutoTimer();
     }
-});
 
-renderParticipants();
-resetAutoPlay();
+    function startAutoTimer() {
+        if (autoInterval) clearInterval(autoInterval);
+        autoInterval = setInterval(() => {
+            nextSlide();
+        }, autoDelay);
+    }
+
+    function stopAutoTimer() {
+        if (autoInterval) {
+            clearInterval(autoInterval);
+            autoInterval = null;
+        }
+    }
+
+    function bindHoverStop() {
+        const carousel = document.querySelector('.participants-carousel');
+        if (!carousel) return;
+        carousel.addEventListener('mouseenter', stopAutoTimer);
+        carousel.addEventListener('mouseleave', startAutoTimer);
+    }
+
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            const newCardsPerView = getCardsPerView();
+            const maxIndex = totalCards - newCardsPerView;
+            if (currentIndex > maxIndex) {
+                currentIndex = maxIndex >= 0 ? maxIndex : 0;
+            }
+            updateCarousel();
+        }, 150);
+    });
+
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+
+    updateCarousel();
+    startAutoTimer();
+    bindHoverStop();
+})();

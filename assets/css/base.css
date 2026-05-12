@@ -89,8 +89,9 @@ h2 {
 }
 
 .footer-text {
-    padding: 72px;
+    /* padding: 72px; */
     padding-top: 40px;
+    padding-bottom: 72px;
     font-family: var(--font-family-main);
     font-weight: 400;
     font-size: 16px;
