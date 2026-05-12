@@ -119,6 +119,7 @@ section.game-section {
 .title-section {
     display: flex;
     width: 806px;
+    margin-bottom: 54px;
 }
 
 .grid-parent {

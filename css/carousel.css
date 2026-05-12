@@ -61,14 +61,14 @@
 .participants-track {
     display: flex;
     will-change: transform;
+    gap: 20px;
 }
 
 .participant-card {
-    flex: 0 0 calc(33.333% - 24px);
-    background: var(--color-white);
-    border-radius: 28px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 37px;
     text-align: center;
-    box-shadow: var(--shadow-sm);
 }
 
 .participant-photo {
@@ -78,6 +78,7 @@
     object-fit: cover;
     display: block;
     background-color: #f0f0f0;
+    margin-bottom: 28px;
 }
 
 .participant-name {
