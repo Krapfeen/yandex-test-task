@@ -2,36 +2,6 @@ section {
     margin: 200px 0;
 }
 
-section.lecture-section {
-    margin-top: 80px;
-    margin-bottom: 64px;
-}
-
-section.game-section {
-    margin-top: 64px;
-}
-
-.lecture-grid {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    flex-wrap: wrap;
-}
-
-.lecture-text {
-    flex: 1;
-    min-width: 250px;
-}
-
-.lecture-text h2 {
-    font-family: var(--font-family-header);
-    font-size: 36px;
-    font-weight: 700;
-    line-height: 1.2;
-    color: var(--color-text-dark);
-    margin: 0;
-}
-
 .lecture-image {
     text-align: center;
 }
@@ -40,72 +10,6 @@ section.game-section {
     max-width: 100%;
     height: auto;
     border-radius: 100%;
-}
-
-.game-section {
-    gap: 44px;
-    border-top: 1px solid var(--color-border);
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.game-image {
-    text-align: center;
-}
-
-.game-image img {
-    max-width: 474px;
-    height: auto;
-    border-radius: var(--radius-md);
-}
-
-.game-info {
-    min-width: 280px;
-    max-width: 704px;
-}
-
-.game-info h2 {
-    font-family: var(--font-family-header);
-    font-size: 36px;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 32px;
-    color: var(--color-text-dark);
-}
-
-.info-table-wrapper {
-    overflow-x: auto;
-    margin-bottom: 24px;
-}
-
-.info-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: var(--font-family-main);
-}
-
-.info-table tr {
-    border-bottom: 1px solid var(--color-border);
-}
-
-.info-table td {
-    padding: 12px 0;
-    vertical-align: baseline;
-}
-
-.info-table td:first-child {
-    font-weight: 500;
-    color: var(--color-text-muted);
-    opacity: 0.7;
-    width: 45%;
-    padding-right: 16px;
-}
-
-.info-table td:last-child {
-    font-weight: 600;
-    color: var(--color-text-dark);
-    text-align: right;
 }
 
 .contact-note {
@@ -157,40 +61,4 @@ section.game-section {
     line-height: 1.2;
     color: var(--color-text-dark);
     flex-shrink: 0;
-}
-
-@media (max-width: 768px) {
-    .game-grid {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .game-info h2 {
-        font-size: 28px;
-        text-align: left;
-    }
-    
-    .info-table td:first-child {
-        width: 40%;
-    }
-    
-    .info-table td {
-        font-size: 14px;
-        padding: 10px 0;
-    }
-}
-
-@media (max-width: 480px) {
-    .game-info h2 {
-        font-size: 24px;
-    }
-    
-    .info-table td:first-child {
-        width: 45%;
-        padding-right: 8px;
-    }
-    
-    .info-table td {
-        font-size: 12px;
-    }
 }
