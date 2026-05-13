@@ -12,6 +12,12 @@ section {
     border-radius: 100%;
 }
 
+.game-image {
+    position: relative;
+    top: -28px;
+    left: -28px;
+}
+
 .contact-note {
     font-family: var(--font-family-main);
     font-size: 20px;

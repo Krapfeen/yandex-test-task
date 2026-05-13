@@ -19,7 +19,7 @@
 .responsive-table th {
     opacity: 0.7;
     font-weight: normal;
-    padding: 16px 0 16px 16px;
+    padding: 16px 16px 16px 0;
     width: 35%;
 }
 
