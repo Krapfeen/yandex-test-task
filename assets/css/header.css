@@ -36,8 +36,8 @@
 }
 
 .background-header {
-    position: absolute;
-    left: 90px;
+    position: relative;
+    left: -814px;
 }
 
 .header-image {

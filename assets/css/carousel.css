@@ -13,7 +13,7 @@
 
 .participants-carousel .card {
     flex: 0 0 100%;
-    max-width: 100%;
+    width: 100%;
     margin: 0;
     padding: 0 15px;
     box-sizing: border-box;
@@ -28,32 +28,32 @@
 }
 
 .participants-carousel .card img {
-    width: 100%;
-    height: auto;
-    padding: 0 37px;
+    width: 244px;
     border-radius: 50%;
     margin-bottom: 16px;
 }
 
 .participants-carousel .card h3 {
     font-family: var(--font-family-main);
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 24px;
+    font-weight: 700;
     margin: 16px 0 8px;
 }
 
 .participants-carousel .card p {
     font-family: var(--font-family-main);
-    font-size: 16px;
-    color: #6c6c6c;
+    font-size: 20px;
+    color: var(--color-text-dark);
+    opacity: .6;
     margin-bottom: 20px;
 }
 
 .participants-carousel .card a {
     display: inline-block;
     font-family: var(--font-family-main);
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
+    line-height: 1.2;
     color: var(--color-text-secondary);
     text-decoration: none;
     border: 1px solid var(--color-text-secondary);
@@ -75,23 +75,21 @@
     margin-bottom: 40px;
 }
 
-.participants-title {
-    margin: 0;
-    font-family: var(--font-family-main);
-    font-size: 32px;
-    font-weight: 600;
-}
-
 .participants-carousel-controls {
     display: flex;
     align-items: center;
     gap: 14px;
 }
 
+button {
+    width: 44px;
+    height: 44px;
+}
+
 .carousel-btn {
     cursor: pointer;
-    background: none;
-    border: none;
+    background: var(--color-text-dark);
+    border-radius: 50%;
     padding: 8px;
     transition: opacity 0.2s;
     display: flex;
@@ -104,8 +102,7 @@
 }
 
 .carousel-btn img {
-    width: 36px;
-    height: 36px;
+    width: 14pxpx;
 }
 
 .participants-counter {
@@ -124,10 +121,16 @@
     }
     
     .participants-title {
-        font-size: 28px;
+        font-size: 24px;
+    }
+
+    h3 {
+        font-size: 24px;
+        line-height: 1.2;
+        font-weight: 700;
     }
     
     .participants-carousel .card img {
-        max-width: 150px;
+        max-width: 244px;
     }
 }

@@ -72,6 +72,7 @@ h1, h2 {
 
 h2 span {
     color: var(--color-red);
+    font-weight: 700;
 }
 
 h1 {
@@ -80,7 +81,16 @@ h1 {
 }
 
 h2 {
+    font-weight: 400;
+}
+
+.h2-1 {
     font-size: 36px;
+    line-height: 1.35;
+}
+
+.h2-2 {
+    font-size: 54px;
 }
 
 .container {
