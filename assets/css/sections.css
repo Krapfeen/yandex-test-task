@@ -36,7 +36,7 @@ section.game-section {
     text-align: center;
 }
 
-.lecture-image img {
+.lecture-image {
     max-width: 100%;
     height: auto;
     border-radius: 100%;
