@@ -43,3 +43,11 @@ section.container {
 #participants-section {
     margin-bottom: 140px;
 }
+
+.planer {
+    z-index: 1;
+    position: relative;
+    margin-top: -375px;
+    top: 375px;
+    left: 900px;
+}
