@@ -13,7 +13,6 @@
     font-weight: var(--font-normal);
     text-transform: uppercase;
     letter-spacing: 0.03em;
-    font-size: var(--font-size-base);
 }
 
 .marquee-content {
