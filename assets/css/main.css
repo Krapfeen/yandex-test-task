@@ -2,8 +2,6 @@
 
 @import url('grid.css');
 @import url('base.css');
-@import url('components.css');
 @import url('header.css');
 @import url('sections.css');
-@import url('carousel.css');
-@import url('table.css');
+@import url('components.css');
