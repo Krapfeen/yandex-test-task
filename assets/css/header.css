@@ -7,10 +7,10 @@
 
 .hero-title {
     font-size: var(--font-size-hero);
-    font-weight: var(--font-weight-extrabold);
+    font-weight: normal;
     letter-spacing: -0.02em;
     line-height: 1.2;
-    color: #1f2a1e;
+    color: var(--color-text-dark);
     max-width: 1000px;
     margin: 0 auto var(--spacing-md);
     text-transform: uppercase;
@@ -29,4 +29,14 @@
     gap: var(--spacing-md);
     justify-content: center;
     flex-wrap: wrap;
+}
+
+.background-header {
+    position: absolute;
+    left: 90px;
+}
+
+.header-image {
+    height: 700px;
+    z-index: -1;
 }
