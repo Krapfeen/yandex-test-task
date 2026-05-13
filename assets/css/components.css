@@ -1,11 +1,12 @@
 .marquee {
     background: var(--color-red);
     color: var(--color-light);
-    padding: 12px 0;
+    padding: 18px 0;
     white-space: nowrap;
     overflow: hidden;
     font-family: var(--font-family-header);
-    font-weight: var(--font-medium);
+    font-size: 22px;
+    font-weight: var(--font-normal);
     text-transform: uppercase;
     letter-spacing: 0.03em;
     font-size: var(--font-size-base);
@@ -18,7 +19,7 @@
 }
 
 .marquee-content span {
-    margin-right: 3rem;
+    margin-right: 12px;
 }
 
 @keyframes marqueeScroll {
@@ -62,4 +63,17 @@
     background: var(--color-dark);
     color: var(--color-text-light);
     transform: translateY(-3px);
+}
+
+section.container {
+    margin-bottom: 200px;
+}
+
+#lecture-section {
+    margin-top: 80px;
+    margin-bottom: 64px;
+}
+
+#participants-section {
+    margin-bottom: 140px;
 }
