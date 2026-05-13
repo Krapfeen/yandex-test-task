@@ -1,4 +1,4 @@
-@media (max-width: 758px) {
+@media (max-width: 1365px) {
     #stages-section .col-12 {
         padding-left: 0;
         padding-right: 0;
@@ -106,5 +106,12 @@
         top: 225px;
         left: 50px;
         width: 335px;
+    }
+
+    #participants-section .participants-carousel-controls {
+        margin-top: 40px;
+        align-self: center;
+        display: flex;
+        justify-content: center;
     }
 }

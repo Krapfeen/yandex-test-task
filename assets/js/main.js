@@ -267,3 +267,31 @@
         handleResize();
     }
 })();
+
+(function() {
+    const controls = document.querySelector('.participants-carousel-controls');
+    if (!controls) return;
+
+    function moveControls() {
+        const isMobile = window.innerWidth <= 758;
+        const carousel = document.querySelector('.participants-carousel');
+        if (!carousel) return;
+
+        const parent = controls.parentNode;
+        const shouldBeAfterCarousel = isMobile;
+        const isAfterCarousel = parent === carousel.parentNode && carousel.nextSibling === controls;
+
+        if (shouldBeAfterCarousel && !isAfterCarousel) {
+            carousel.insertAdjacentElement('afterend', controls);
+        } else if (!shouldBeAfterCarousel && isAfterCarousel) {
+            const headerRow = document.querySelector('#participants-section .row:first-child');
+            const col4 = headerRow?.querySelector('.col-4');
+            if (col4 && !col4.contains(controls)) {
+                col4.appendChild(controls);
+            }
+        }
+    }
+
+    moveControls();
+    window.addEventListener('resize', () => setTimeout(moveControls, 100));
+})();
