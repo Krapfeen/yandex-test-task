@@ -35,13 +35,6 @@
     color: var(--color-text-dark);
 }
 
-.hero-buttons {
-    display: flex;
-    gap: var(--spacing-md);
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
 .background-header {
     position: absolute;
     left: 90px;
