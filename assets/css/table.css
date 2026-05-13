@@ -1,0 +1,74 @@
+.responsive-table {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-family: var(--font-family-main);
+    font-size: 20px;
+}
+
+.responsive-table th,
+.responsive-table td {
+    border: 1px solid var(--border-color);
+    text-align: left;
+    vertical-align: top;
+}
+
+.responsive-table th {
+    opacity: 0.7;
+    font-weight: normal;
+    padding: 16px 0 16px 16px;
+    width: 35%;
+}
+
+.responsive-table td {
+    font-weight: 600;
+    padding: 16px;
+}
+
+td span {
+    text-decoration: line-through solid var(--color-red);
+}
+
+@media (max-width: 768px) {
+    .responsive-table,
+    .responsive-table tbody,
+    .responsive-table tr,
+    .responsive-table th,
+    .responsive-table td {
+        display: block;
+    }
+
+    .responsive-table {
+        border: none;
+        background: transparent;
+    }
+
+    .responsive-table tr {
+        /* margin-bottom: 20px; */
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius);
+        background: #fff;
+        overflow: hidden;
+    }
+
+    .responsive-table th,
+    .responsive-table td {
+        border: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: 16px 0;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .responsive-table tr > :last-child {
+        border-bottom: none;
+    }
+
+    .responsive-table th {
+        font-weight: 600;
+        opacity: 0.7
+    }
+}
