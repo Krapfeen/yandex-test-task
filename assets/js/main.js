@@ -110,26 +110,21 @@
 })();
 
 (function() {
-    console.log('Stages slider script started');
+    function isMobileWidth() {
+        return window.matchMedia('(max-width: 758px)').matches;
+    }
 
     const section = document.getElementById('stages-section');
-    if (!section) {
-        console.warn('No #stages-section');
-        return;
-    }
+    if (!section) return;
 
     const gridParent = section.querySelector('.grid-parent');
-    if (!gridParent) {
-        console.warn('No .grid-parent');
-        return;
-    }
+    if (!gridParent) return;
 
-    const items = Array.from(gridParent.querySelectorAll('.grid-inner'));
-    if (items.length === 0) {
-        console.warn('No .grid-inner items');
-        return;
-    }
-    console.log('Found items:', items.length);
+    const originalItems = Array.from(gridParent.querySelectorAll('.grid-inner'));
+    if (originalItems.length !== 7) return;
+
+    const groups = [ [1, 2], [3], [4, 5], [6], [7] ];
+    const totalSlides = groups.length;
 
     let sliderActive = false;
     let track = null;
@@ -137,20 +132,35 @@
     let dotsContainer = null;
     let currentIndex = 0;
 
-    function isMobile() {
-        return window.innerWidth <= 768;
+    function buildSlides() {
+        const slides = [];
+        for (let g of groups) {
+            const slideDiv = document.createElement('div');
+            slideDiv.className = 'stages-slide';
+            for (let num of g) {
+                const original = originalItems[num - 1];
+                if (original) {
+                    const clone = original.cloneNode(true);
+                    slideDiv.appendChild(clone);
+                }
+            }
+            slides.push(slideDiv);
+        }
+        return slides;
     }
 
     function initSlider() {
         if (sliderActive) return;
-        console.log('Initializing slider...');
+        console.log('[Stages] Init slider');
 
+        const slides = buildSlides();
         track = document.createElement('div');
         track.className = 'stages-track';
+        slides.forEach(slide => track.appendChild(slide));
 
-        items.forEach(item => track.appendChild(item));
         gridParent.innerHTML = '';
         gridParent.appendChild(track);
+        gridParent.classList.add('stages-slider-active');
 
         const controls = document.createElement('div');
         controls.className = 'stages-controls';
@@ -160,7 +170,10 @@
         prevBtn.innerHTML = '<img src="assets/images/btn-prev.svg" alt="Назад">';
         prevBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            slidePrev();
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateSlider();
+            }
         });
 
         nextBtn = document.createElement('button');
@@ -168,7 +181,10 @@
         nextBtn.innerHTML = '<img src="assets/images/btn-next.svg" alt="Вперёд">';
         nextBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            slideNext();
+            if (currentIndex < totalSlides - 1) {
+                currentIndex++;
+                updateSlider();
+            }
         });
 
         dotsContainer = document.createElement('div');
@@ -177,118 +193,72 @@
         controls.appendChild(prevBtn);
         controls.appendChild(dotsContainer);
         controls.appendChild(nextBtn);
-
         gridParent.parentNode.insertBefore(controls, gridParent.nextSibling);
 
-        gridParent.classList.add('stages-slider-active');
-
-        updateDots();
-        updateButtons();
-        setTimeout(() => updatePosition(), 10);
-
+        currentIndex = 0;
+        updateSlider();
         sliderActive = true;
-        console.log('Slider initialized');
+    }
+
+    function updateSlider() {
+        if (!track) return;
+        const slideWidth = track.children[0]?.offsetWidth;
+        if (!slideWidth) return;
+        const gap = 16;
+        const shift = -currentIndex * (slideWidth + gap);
+        track.style.transform = `translateX(${shift}px)`;
+
+        if (dotsContainer) {
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('button');
+                dot.classList.add('stages-dot');
+                if (i === currentIndex) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    currentIndex = i;
+                    updateSlider();
+                });
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        if (prevBtn && nextBtn) {
+            if (currentIndex === 0) prevBtn.classList.add('disabled');
+            else prevBtn.classList.remove('disabled');
+            if (currentIndex === totalSlides - 1) nextBtn.classList.add('disabled');
+            else nextBtn.classList.remove('disabled');
+        }
     }
 
     function destroySlider() {
         if (!sliderActive) return;
-        console.log('Destroying slider...');
+        console.log('[Stages] Destroy slider');
 
-        const itemsFromTrack = Array.from(track.children);
         gridParent.innerHTML = '';
-        itemsFromTrack.forEach(item => gridParent.appendChild(item));
+        originalItems.forEach(item => gridParent.appendChild(item));
+        gridParent.classList.remove('stages-slider-active');
 
         const controls = document.querySelector('.stages-controls');
         if (controls) controls.remove();
 
-        gridParent.classList.remove('stages-slider-active');
         track = null;
-        prevBtn = null;
-        nextBtn = null;
-        dotsContainer = null;
+        prevBtn = nextBtn = dotsContainer = null;
         sliderActive = false;
         currentIndex = 0;
     }
 
-    function updateDots() {
-        if (!dotsContainer) return;
-        const totalPages = items.length;
-        dotsContainer.innerHTML = '';
-        for (let i = 0; i < totalPages; i++) {
-            const dot = document.createElement('button');
-            dot.classList.add('stages-dot');
-            if (i === currentIndex) dot.classList.add('active');
-            dot.addEventListener('click', () => goToSlide(i));
-            dotsContainer.appendChild(dot);
-        }
-    }
-
-    function updatePosition() {
-        if (!track || !items[0]) return;
-        const itemWidth = items[0].offsetWidth;
-        if (!itemWidth) return;
-        const gap = 16;
-        const shift = -currentIndex * (itemWidth + gap);
-        track.style.transform = `translateX(${shift}px)`;
-    }
-
-    function updateButtons() {
-        if (!prevBtn || !nextBtn) return;
-        if (currentIndex === 0) {
-            prevBtn.classList.add('disabled');
-        } else {
-            prevBtn.classList.remove('disabled');
-        }
-        if (currentIndex === items.length - 1) {
-            nextBtn.classList.add('disabled');
-        } else {
-            nextBtn.classList.remove('disabled');
-        }
-    }
-
-    function slidePrev() {
-        if (currentIndex > 0) {
-            currentIndex--;
-            updatePosition();
-            updateButtons();
-            updateDots();
-        }
-    }
-
-    function slideNext() {
-        if (currentIndex < items.length - 1) {
-            currentIndex++;
-            updatePosition();
-            updateButtons();
-            updateDots();
-        }
-    }
-
-    function goToSlide(index) {
-        if (index >= 0 && index < items.length && index !== currentIndex) {
-            currentIndex = index;
-            updatePosition();
-            updateButtons();
-            updateDots();
-        }
-    }
-
     function handleResize() {
-        if (isMobile() && !sliderActive) {
+        if (isMobileWidth() && !sliderActive) {
             initSlider();
-        } else if (!isMobile() && sliderActive) {
+        } else if (!isMobileWidth() && sliderActive) {
             destroySlider();
-        } else if (isMobile() && sliderActive) {
-            updatePosition();
-            updateDots();
-            updateButtons();
+        } else if (isMobileWidth() && sliderActive) {
+            updateSlider();
         }
     }
 
-    let resizeTimer;
     window.addEventListener('resize', () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(handleResize, 150);
+        setTimeout(handleResize, 100);
     });
 
     if (document.readyState === 'loading') {

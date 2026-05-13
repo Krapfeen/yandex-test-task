@@ -1,82 +1,110 @@
-.stages-controls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
-    margin-top: 32px;
-}
-button {
-    width: 44px;
-    height: 44px;
-}
-.stages-prev,
-.stages-next {
-    background-color: var(--color-text-dark);
-    border: none;
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: 0.2s;
-}
+@media (max-width: 758px) {
+    #stages-section .col-12 {
+        padding-left: 0;
+        padding-right: 0;
+    }
 
-.stages-prev.disabled,
-.stages-next.disabled {
-    opacity: 0.2;
-    pointer-events: none;
-    cursor: not-allowed;
-}
-
-.stages-prev img,
-.stages-next img {
-    width: 20px;
-    height: 20px;
-}
-
-.stages-dots {
-    display: flex;
-    gap: 8px;
-}
-
-.stages-dot {
-    width: 10px;
-    height: 10px;
-    background-color: #ccc;
-    border-radius: 50%;
-    cursor: pointer;
-    border: none;
-    padding: 0;
-    transition: 0.2s;
-}
-
-.stages-dot.active {
-    background-color: var(--color-text-dark, #1f1f1f);
-    width: 12px;
-    height: 12px;
-}
-
-@media (max-width: 375px) {
     .grid-parent.stages-slider-active {
         overflow: hidden;
         width: 100%;
-    }
-    .stages-track {
-        display: flex;
-        transition: transform 0.3s ease-in-out;
-        gap: 16px;
-    }
-    .stages-track .grid-inner {
-        flex: 0 0 calc(100% - 32px);
-        max-width: calc(100% - 32px);
-        margin-left: 16px;
-        margin-right: 16px;
+        margin-top: 148px;
     }
 
-    button {
+    .stages-track {
+        display: flex;
+        gap: 0;
+        transition: transform 0.3s ease-in-out;
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+        box-sizing: border-box;
+    }
+
+    .stages-slide {
+        flex: 0 0 335px;
+        width: 335px;
+        height: 300px;
+        box-sizing: border-box;
+        background-color: var(--color-background-section);
+        display: flex;
+        flex-direction: column;
+    }
+    .stages-slide .grid-inner:first-child {
+        padding-top: 62px;
+    }
+
+    .stages-slide .grid-inner {
+        width: 100%;
+        font-size: 18px;
+        margin-bottom: 28px;
+        padding: 16px;
+        border-radius: 8px;
+        box-sizing: border-box;
+    }
+
+    .stages-slide .grid-inner:last-child {
+        margin-bottom: 0;
+    }
+
+    .stages-controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        margin-top: 32px;
+    }
+
+    .stages-prev,
+    .stages-next {
+        background: #1f1f1f;
+        border: none;
+        border-radius: 50%;
         width: 36px;
         height: 36px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .stages-prev.disabled,
+    .stages-next.disabled {
+        opacity: 0.4;
+        pointer-events: none;
+    }
+
+    .stages-prev img,
+    .stages-next img {
+        width: 20px;
+        height: 20px;
+        filter: brightness(0) invert(1);
+    }
+
+    .stages-dots {
+        display: flex;
+        gap: 8px;
+    }
+
+    .stages-dot {
+        width: 10px;
+        height: 10px;
+        background: #ccc;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+    }
+
+    .stages-dot.active {
+        background: #1f1f1f;
+        width: 12px;
+        height: 12px;
+    }
+
+    .planer {
+        position: relative;
+        top: 225px;
+        left: 50px;
+        width: 335px;
     }
 }
