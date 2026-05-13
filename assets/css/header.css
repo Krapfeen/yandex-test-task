@@ -44,3 +44,19 @@
     height: 700px;
     z-index: -1;
 }
+
+.title-section {
+    position: relative;
+}
+.title-section span {
+    position: absolute;
+    bottom: 10px;
+    left: 301px;
+    width: 280px;
+    text-align: left;
+    font-family: var(--font-family-main);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--color-text-secondary);
+}

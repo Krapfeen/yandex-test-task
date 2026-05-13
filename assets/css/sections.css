@@ -31,6 +31,8 @@ section {
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     font-size: 20px;
+    font-weight: 500;
+    line-height: 1.2;
 }
 
 .grid-inner-1 { grid-area: 1 / 1 / 2 / 2; }
@@ -39,7 +41,11 @@ section {
 .grid-inner-4 { grid-area: 2 / 1 / 3 / 2; }
 .grid-inner-5 { grid-area: 2 / 2 / 3 / 3; }
 .grid-inner-6 { grid-area: 3 / 1 / 4 / 2; }
-.grid-inner-7 { grid-area: 3 / 2 / 4 / 4; }
+.grid-inner-7 {grid-area: 3 / 2 / 4 / 4; }
+
+.grid-inner-7 p:last-child {
+    width: 410px;
+}
 
 .grid-inner {
     background-color: var(--color-background-section);
