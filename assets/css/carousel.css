@@ -67,11 +67,6 @@
     color: white;
 }
 
-#participants-section .row.justify-between {
-    display: block;
-    margin: 0;
-}
-
 .participants-header {
     display: flex;
     flex-wrap: wrap;
