@@ -8,21 +8,24 @@
     padding: 18px 0;
     white-space: nowrap;
     overflow: hidden;
+    overflow-x: hidden;
+    width: 100%;
     font-family: var(--font-family-header);
-    font-size: 22px;
+    font-size: 16px;
     font-weight: var(--font-normal);
     text-transform: uppercase;
-    letter-spacing: 0.03em;
 }
 
 .marquee-content {
-    display: inline-block;
-    animation: marqueeScroll 18s linear infinite;
-    padding-left: 100%;
+    display: inline-flex;
+    gap: 12px;
+    animation: marqueeScroll 10s linear infinite;
+    width: auto;
 }
 
 .marquee-content span {
     margin-right: 12px;
+    white-space: nowrap;
 }
 
 @keyframes marqueeScroll {
