@@ -44,7 +44,7 @@
 
         const totalPages = Math.ceil(totalCards / cardsPerView);
         const currentPage = Math.floor(currentIndex / cardsPerView) + 1;
-        if (counterSpan) counterSpan.textContent = `${currentPage} / ${totalPages}`;
+        if (counterSpan) counterSpan.textContent = `${currentPage*cardsPerView} / ${totalPages*cardsPerView}`;
     }
 
     function nextSlide() {
