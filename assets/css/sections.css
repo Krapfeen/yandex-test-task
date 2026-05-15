@@ -54,7 +54,10 @@ section {
 }
 
 .grid-inner {
-    background-color: var(--color-background-section);
+    background-image: url('../images/background.png'), url('../images/background-3.png');
+    /* background-color: ; */
+    background-size: 1066px;
+    background-blend-mode: multiply;
     display: flex;
     gap: 16px;
     padding: 20px;
