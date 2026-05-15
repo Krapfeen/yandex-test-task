@@ -25,7 +25,8 @@
         width: 335px;
         height: 300px;
         box-sizing: border-box;
-        background-color: var(--color-background-section);
+        background-image: url('../images/background.png'), url('../images/background-3.png');
+        background-blend-mode: multiply;
         display: flex;
         flex-direction: column;
     }
@@ -40,6 +41,7 @@
         padding: 16px;
         border-radius: 8px;
         box-sizing: border-box;
+        background-color: unset;
     }
 
     .stages-slide .grid-inner:last-child {
